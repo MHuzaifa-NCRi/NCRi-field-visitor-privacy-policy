@@ -100,7 +100,7 @@
     <h1>Privacy Policy — Field Visitor Mobile Application</h1>
     
     <div class="meta-box">
-        <strong>Effective Date:</strong> September 9, 2026 | <strong>Last Updated:</strong> September 9, 2026 | <strong>Policy Version:</strong> 1.1<br>
+        <strong>Effective Date:</strong> September 9, 2026 | <strong>Last Updated:</strong> September 23, 2026 | <strong>Policy Version:</strong> 1.2<br>
         <strong>Applicable App Version:</strong> 1.0.0 and above | <strong>Platform:</strong> Android<br>
         <strong>Data Processor:</strong> NCRi Solutions (Field Collection Division), +(92) 301-2021932, Islamabad, Pakistan — processes data strictly on the Controller’s documented instructions.<br>
         <strong>Governing Law:</strong> Islamic Republic of Pakistan (Courts at Islamabad)<br>
@@ -118,7 +118,7 @@
     <h3>A. Location Data</h3>
     <ul>
         <li><strong>Precise GPS Location:</strong> We collect precise geographical coordinates (latitude and longitude) while the Application is in use and visibly open on screen (foreground only) when the user interacts with navigation features or submits visit updates.</li>
-        <li><strong>Purpose:</strong> Location data is used to plot assigned customer addresses on Google Maps, provide route navigation, and verify that field visits are conducted at the designated customer locations.</li>
+        <li><strong>Purpose:</strong> Device location data is used to plot assigned customer addresses on Google Maps, provide route navigation, and verify that field visits are conducted at the designated customer locations. Customer accounts and destination addresses are provided by the Partner Bank and assigned by the collector/supervisor to the Field Visitor through the central CRM. When the Field Visitor arrives at the site and submits an update, their visit address, coordinates, and timestamp are logged directly in the central CRM to verify physical attendance.</li>
         <li><strong>Background Location:</strong> The Application does NOT collect location data when it is closed or running in the background.</li>
     </ul>
 
@@ -126,20 +126,21 @@
     <ul>
         <li><strong>Microphone Access:</strong> With user runtime permission, the Application accesses the device microphone when the Field Agent initiates a visit update by tapping "Add Remarks".</li>
         <li><strong>Purpose:</strong> Audio files are recorded during field visit logging as proof of customer interaction and evidence of disposition records for enterprise auditing.</li>
-        <li><strong>Recording Trigger:</strong> Audio recording starts automatically when the Field Agent presses the "Add Update" button and continues while remarks are logged for a maximum of 15 minutes. The Application does not record audio at any other time.</li>
+        <li><strong>Recording Trigger:</strong> Audio recording starts automatically when the Field Agent presses the "Add Remarks" button and continues while remarks are logged for a maximum of 15 minutes. The Application does not record audio at any other time.</li>
     </ul>
 
     <h3>C. Camera, Photos & Document Files</h3>
     <ul>
-        <li><strong>Camera & Storage Access:</strong> The Application accesses the camera and media files selected by the user.</li>
+        <li><strong>Camera & File Selection:</strong> The Application accesses the camera to capture photos, and uses Android's system photo/document pickers to attach existing files. Only the exact photo or file you select is accessed — the Application never receives broader access to your gallery or storage.</li>
         <li><strong>Purpose:</strong> Allows collectors to capture photos of visited sites, scan visit notices, and attach PDF or image proof of field visits.</li>
-        <li>The Application only accesses the exact photos or files you pick — whether from your gallery/files or by taking a photo in the app — right when you upload them. It never scans, browses, or uploads anything else from your storage.</li>
+        <li>The Application only accesses the exact photos or files you pick — whether from taking a photo in the app or selecting a file via the system photo/document picker — right when you upload them. It never scans, browses, or uploads anything else from your device storage.</li>
     </ul>
 
     <h3>D. User Account & Authentication Information</h3>
     <ul>
         <li><strong>Officer Credentials:</strong> Collector ID, full name, username, and encrypted JSON Web Tokens (JWT) for secure authentication, device identifier, and login/logout timestamps.</li>
-        <li><strong>Purpose:</strong> To manage user authorization, verify identity, and attribute field visit records to the responsible officer.</li>
+        <li><strong>Login Only (No Self-Registration):</strong> The Application provides a login interface only and does not support public sign-up or self-registration. Credentials are provisioned directly by enterprise administrators. Field Agents can only access and view cases specifically assigned to their profile in the central CRM.</li>
+        <li><strong>Purpose:</strong> To manage user authorization, verify identity, attribute field visit records to the responsible officer, and ensure least-privilege case access.</li>
     </ul>
 
     <h3>E. Financial Visit & Loan Data</h3>
@@ -166,8 +167,7 @@
     <ul>
         <li>Verifying and logging officer field visits to customer addresses.</li>
         <li>Navigating officers to assigned locations via integrated map tools.</li>
-        <li>Storing field evidence, visit reports, and payment details securely.</li>
-        <li>Synchronizing offline visit records when internet connectivity is restored.</li>
+        <li>Synchronizing offline visit records when internet connectivity is restored. In areas with poor or no cellular coverage, visit dispositions, coordinates, audio evidence, and attachments are cached locally in AES-256 encrypted storage (SQLCipher sandbox) and automatically synchronized with the central CRM once network connectivity is re-established.</li>
         <li>Ensuring security, preventing unauthorized access, and maintaining audit trails.</li>
     </ul>
     <p><strong>Legal basis for processing:</strong> We process personal data on the following grounds:</p>
@@ -215,7 +215,7 @@
         <li><strong>Location</strong> (<code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>): Required for map navigation and visit coordinate verification.</li>
         <li><strong>Microphone</strong> (<code>RECORD_AUDIO</code>): Required to record audio evidence during field visits remark submissions. Active only while adding remarks.</li>
         <li><strong>Camera</strong> (<code>CAMERA</code>): Required to photograph visited sites and scan visit notices.</li>
-        <li><strong>Media access</strong> (<code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VISUAL_USER_SELECTED</code> on Android 13+; <code>READ_EXTERNAL_STORAGE</code> on Android 12 and below): Required to attach existing photographs or documents selected by the user.</li>
+        <li><strong>Photo & Document Selection:</strong> The Application uses Android's built-in Photo Picker and document picker (Storage Access Framework) to let you attach existing photographs or PDF documents. These system pickers give the Application access only to the specific files you select — no broad storage or media-library permission (such as <code>READ_MEDIA_IMAGES</code> or <code>READ_EXTERNAL_STORAGE</code>) is requested.</li>
         <li><strong>Internet & Network State</strong> (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>): Required to check connectivity and synchronize data with enterprise servers.</li>
     </ul>
     <p>All permissions are requested at the moment the relevant feature is first used, together with an explanation of why the permission is needed. You may deny or later revoke any permission in your device settings.</p>
@@ -257,7 +257,7 @@
     <h2>13. Changes to This Privacy Policy</h2>
     <p>This Policy may be updated periodically. Any changes will be published in-app with an updated Effective Date. Where a change materially affects how data is processed, notice will be provided in-app prior to the change taking effect.</p>
 
-    <h2>14. Contact Us</h2>
+    <h2 id="contact">14. Contact Us</h2>
     <p>
         <strong>Organization:</strong> NCRi Solutions / Field Collection Division<br>
         <strong>Data Protection Officer:</strong> Hammad Shabbir | Senior Manager Infrastructure and Network<br>
